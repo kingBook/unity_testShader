@@ -20,7 +20,7 @@ public class TestSprite : MonoBehaviour{
 		for(int i=0;i<uvs.Length;i++){
 			Debug.LogFormat("i:{0} uv:{1} vertex:{2}",i,uvs[i],vertices[i]);
 		}
-	}
+    }
 
 	protected void Update(){
 

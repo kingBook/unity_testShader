@@ -13,7 +13,19 @@
 	SubShader {
 		//由于序列帧图像通常都是透明纹理，我们需要设置Pass的相关状态，以渲染透明效果
 		//Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
-		//Cull Off ZWrite Off ZTest Always
+		Tags
+		{
+			"Queue" = "Transparent"
+			"IgnoreProjector" = "True"
+			"RenderType" = "Transparent"
+			"PreviewType" = "Plane"
+			"CanUseSpriteAtlas" = "True"
+		}
+ 
+		Cull Off
+		Lighting Off
+		ZWrite Off
+		Blend One OneMinusSrcAlpha
 		Pass {
 			//Tags { "LightMode"="ForwardBase" }
 			
@@ -72,8 +84,7 @@
 				fixed4 c = tex2D(_MainTex, uv);
 				c.rgb *= _Color;
 				
-				fixed4 cor=(1.0,1.0,1.0,1.0);
-				return cor;
+				return c;
 			}
 			ENDCG
 		}  
